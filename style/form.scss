@@ -1,0 +1,21 @@
+input, textarea {
+  max-width:100%
+}
+
+div > form.ui.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.field > input {
+  width: 80%;
+  border: none;
+  margin: 10px 0px 10px 0px;
+  padding: 8px;
+}
+
+
+figure.imagem-form {
+    height: 200px;
+}

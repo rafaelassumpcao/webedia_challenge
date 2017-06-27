@@ -1,0 +1,27 @@
+
+nav.header-menu{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  align-self: stretch;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  padding: 0px 5% 0px 5%;
+  
+}
+
+nav.header-menu > a {
+  padding: 15px 5px 15px 5px;
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+div.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
