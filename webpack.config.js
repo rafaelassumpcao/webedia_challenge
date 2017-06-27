@@ -3,11 +3,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-
 const VENDOR_LIBS = [
-  'faker',
   'react',
-  'react-dom'
+  'react-dom',
+  'axios',
+  'react-burger-menu',
+  'react-responsive-component',
+  'react-router-dom'
 ];
 
 module.exports = {
@@ -16,7 +18,7 @@ module.exports = {
     vendor: VENDOR_LIBS
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'public'),
     filename: '[name].[chunkhash].js'
   },
   module: {
@@ -42,10 +44,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new ExtractTextPlugin('style.css')
-   /* ,
+    new ExtractTextPlugin('style.scss'),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })*/
+    }),
+    new webpack.optimize.UglifyJsPlugin()
   ]
 };
