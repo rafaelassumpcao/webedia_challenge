@@ -8,14 +8,30 @@ div > form.ui.form {
   text-align: center;
 }
 
-.field > input {
-  width: 80%;
+.field > textarea, input {
+  height: 55px;
+  width: 95%;
+  resize: none;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: none;
-  margin: 10px 0px 10px 0px;
-  padding: 8px;
+  background-color: transparent;
+
 }
 
+.field > input {
+  width: 95%;
+  border: none;
+  height: 20px;
+}
 
-figure.imagem-form {
-    height: 200px;
+.field > textarea:focus, input:focus {
+    outline: none !important;
+    border-bottom:1px solid #e88648;
+}
+
+figure.imagem-form > img {
+    max-height: 200px;
+    margin: 10px 0px 10px 0px;
 }

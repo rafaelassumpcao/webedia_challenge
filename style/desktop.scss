@@ -8,6 +8,7 @@ nav.header-menu{
   margin-top: 15px;
   margin-bottom: 30px;
   padding: 0px 5% 0px 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   
 }
 
@@ -18,10 +19,28 @@ nav.header-menu > a {
   color: black;
 }
 
+nav.header-menu > a:hover {
+  background-color: #e88648;
+  color: white;
+  
+}
+
 div.header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 15px;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-item{
+  flex: 1 0 auto;
+  max-width: 48%;
+  display: flex;
 }

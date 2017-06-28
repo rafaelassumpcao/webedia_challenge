@@ -12,21 +12,7 @@ export default class Header extends Component {
         <div>
           <ResponsiveComponent query="only screen and (min-width: 901px)">
             <div className="header">
-              <header>
-                {this.props.children}
-              </header>
-              <nav className="header-menu">                
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-                <a href="#">Lorem Ipsur</a>
-              </nav>
+              {this.props.children}
             </div>
           </ResponsiveComponent>
 

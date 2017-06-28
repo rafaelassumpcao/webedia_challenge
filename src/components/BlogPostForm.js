@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
 import axios from 'axios';
+
+import { debounce } from '../support';
 
 export default class BlogPostForm extends Component {
 
@@ -12,9 +13,11 @@ export default class BlogPostForm extends Component {
       title: '',
       description: '',
       imageLink: '',
-      isLoaded: false
+      isLoaded: false,
     };
     this.handleFormInputs = this.handleFormInputs.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.clean = this.clean.bind(this);
   }
 
   componentDidMount() {
@@ -29,9 +32,24 @@ export default class BlogPostForm extends Component {
     })
   }
 
+  clean() {
+    const cleanedState = Object.keys(this.state)
+    .filter(name => name != "isLoaded")
+    .reduce((curr, next,idx, original) => {
+        curr[next] = ''
+        return curr;
+    }, {});
+    console.log(cleanedState)
+    this.setState(cleanedState);
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    axios.post('/posts')
+    axios.post('/webedia/posts', this.state)
+      .then(result => {
+        console.log(result)
+      })
+    this.clean();
   }
 
 
@@ -41,11 +59,12 @@ export default class BlogPostForm extends Component {
         <div className={this.state.isLoaded ? 'hide': 'show'}>
           <div className="loader">Loading...</div>
         </div>
-
+        <span>Create New Blog Post</span>
         <div className={this.state.isLoaded ? 'show': 'hide'}>
           <form onSubmit={ this.handleSubmit } className="ui form">
             <div className="field">
-              <input 
+              <label>Header Title</label>
+              <textarea 
                 type="text" 
                 name="header" 
                 placeholder="type here  your Header Title" 
@@ -56,7 +75,8 @@ export default class BlogPostForm extends Component {
                 value={this.state.header}/>
             </div>
             <div className="field">
-              <input 
+              <label>Sub Header Title</label>
+              <textarea 
                 type="text" 
                 name="subHeader" 
                 placeholder="Type complementary info to Header Title"
@@ -67,7 +87,8 @@ export default class BlogPostForm extends Component {
                 value={this.state.subHeader}/>
             </div>
             <div className="field">
-              <input 
+              <label>Main title</label>
+              <textarea 
                 type="text" 
                 name="title" 
                 placeholder="condensed info about the blog post" 
@@ -78,7 +99,8 @@ export default class BlogPostForm extends Component {
                 value={this.state.title}/>
             </div>
             <div className="field">
-              <input 
+              <label>Description</label>
+              <textarea 
                 type="text" 
                 name="description" 
                 placeholder="the full body of your blog post" 

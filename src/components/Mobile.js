@@ -25,6 +25,15 @@ export default class Mobile extends Component {
               width={ 300 }
               isOpen ={this.state.isMenuOpen}
               >
+              <Link className="menu-item" to="/">Home</Link>
+              <Link className="menu-item" to="/post">Post</Link>
+              <Link className="menu-item" to="/post">Post</Link>
+              <Link className="menu-item" to="/post">Post</Link>
+              <Link className="menu-item" to="/post">Post</Link>
+              <Link className="menu-item" to="/post">Post</Link>
+              <Link className="menu-item" to="/post">Post</Link>
+              <Link className="menu-item" to="/post">Post</Link>
+              <Link className="menu-item" to="/post">Post</Link>
               <Link className="menu-item" to="/post">Post</Link>
                 
             </Push>
