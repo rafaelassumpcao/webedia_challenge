@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "./node_modules/.bin/rimraf dist npm-debug.log.* public",
     "start": "NODE_ENV=production npm run build && node dist/server.js",
-    "build": "npm run clean && mkdir dist && npm run wpck-p && ./node_modules/.bin/babel server -s -d dist",
+    "build": "npm run clean && mkdir dist && npm run wpck-p &&  ./node_modules/.bin/babel server -s -d dist",
     "wpck-p": "./node_modules/.bin/webpack -p --config webpack.config.js --progress",
     "serve": "webpack-dev-server",
     "test": "mocha"
