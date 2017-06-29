@@ -38,7 +38,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ //resolves the double including of repeated dependecys
+    new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),
     new HtmlWebpackPlugin({

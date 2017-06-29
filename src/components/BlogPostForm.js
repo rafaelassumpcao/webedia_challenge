@@ -1,3 +1,8 @@
+/**
+ * responsible to handle the creation blog posts flow
+ */
+
+
 import React, { Component } from 'react';
 import axios from 'axios';
 

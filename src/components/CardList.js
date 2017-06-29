@@ -1,3 +1,8 @@
+/**
+ * Responsible to render all cards with blog posts
+ * pagiantion was fully implemented in desktop version, but no in mobile.
+ */
+
 import React, { Component } from 'react';
 import { ResponsiveComponent } from 'react-responsive-component';
 import axios from 'axios';
@@ -15,6 +20,11 @@ export default class CardList extends Component {
       isLoaded: false 
     };
     this.changePage = this.changePage.bind(this);
+    this.handleCardItemClik = this.handleCardItemClik.bind(this);
+  }
+
+  handleCardItemClik(cardSelected) {
+    alert(`The card with top level header \n"${cardSelected.header}"\nWas clicked!`);  
   }
 
   changePage(page) {
@@ -45,18 +55,19 @@ export default class CardList extends Component {
   render(){    
 
     const cardItemsMobile = 
-      this.state.posts.map(post => ( <Card blogPost={ post } key={ post._id }/> ));
+      this.state.posts.map(post => ( <Card onCardClick={this.handleCardItemClik} blogPost={ post } key={ post._id }/> ));
 
     const hasPosts = this.state.posts.length !== 0;
     let firstCard, allOtherCards;
     if (hasPosts) {
       const [head, ...tail] = this.state.posts;
-      firstCard = <Card blogPost={head} />;
+      firstCard = <Card onCardClick={ this.handleCardItemClik} blogPost={head} />;
       allOtherCards = tail.map((post, index) =>  
         (
           <div key={ post._id } className="flex-item">
             <Card blogPost={ post } 
-                  isDesktop={ this.props.desktop } 
+                  isDesktop={ this.props.desktop }
+                  onCardClick={ this.handleCardItemClik }
             />
           </div>
         )

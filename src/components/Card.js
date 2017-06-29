@@ -2,10 +2,10 @@ import React from 'react';
 
 import CardSection from './CardSection';
 
-const Card = ({ blogPost, isDesktop = false }) => {
+const Card = ({ blogPost, isDesktop = false, onCardClick }) => {
   const { header, subHeader, title, description, imageLink } = blogPost;
   return(
-    <article className="card">
+    <article onClick={() => onCardClick(blogPost)} className="card">
       <CardSection>
         <header className="card-section-title">
           { header }

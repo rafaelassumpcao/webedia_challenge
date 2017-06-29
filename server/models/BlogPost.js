@@ -1,8 +1,10 @@
-import mongoose, { Schema } from 'mongoose';
-
 /*
-this is only for support the view  so will not focus in a real NoSQL document design
+* this is only for support the view  so will not focus in a real NoSQL document design
+*  like subdocuments to show comments from an blog post 
+*  even if this concept can fit into logic application
 */
+
+import mongoose, { Schema } from 'mongoose';
 const BlogPostSchema = new Schema({
   header: { type: String, required: [true, 'Header title is required']},
   subHeader: { type: String, required: [true, ' Header subtitle is required'] },

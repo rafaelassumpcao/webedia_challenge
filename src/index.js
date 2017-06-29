@@ -1,3 +1,7 @@
+/**
+ * The main entry of the application
+ * it is responsible to render the hole app into the body doc identified by id='root'
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../style/style.scss'

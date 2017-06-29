@@ -1,3 +1,8 @@
+/**
+ * everything related to database configuration
+ * ex: connection, end connections and kill finish node process
+ */
+
 import mongoose from 'mongoose';
 
 const PORT = 27017;
@@ -12,12 +17,15 @@ export const connectToMongoDB = () => {
 }
 
 mongoose.connection
-    .once('open', () => console.log("Connected to localhost"))
+    .once('open', () => 
+      console.log(`\x1b[32m CONNECTION TO webedia (mLab instance) WAS SUCCESSFUL! \x1b[0m`))
     .on('error', error => console.warn('Warning', error));
 
 process.on('SIGINT', () => {  
   mongoose.connection.close(()  => {
-    console.log('Mongoose default connection disconnected through app termination');
+    console.log(`
+      \x1b[47m \x1b[30m CONNECTION TO MONGODB INSTANCE CLOSED\x1b[0m
+    `);
     process.exit(0);
   }); 
 }); 

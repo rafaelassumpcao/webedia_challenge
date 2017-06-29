@@ -1,3 +1,7 @@
+/**
+ * responsible to handle all request to /posts and send back an response
+ */
+
 import BlogPost from '../models/BlogPost';
 import { DECRESCENT_ORDER, MAX_ITEM_PER_PAGE } from '../util';
 

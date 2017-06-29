@@ -1,3 +1,7 @@
+/*
+  the express management to all functionalities
+ */
+
 import express from 'express';
 import bodyParser from 'body-parser';
 
@@ -19,6 +23,6 @@ app.use('/webedia', routes);
 
 
 //if any route was not found send 404 status code
-app.use((req, res, next) => res.statusCode(404));
+app.use((req, res, next) => res.status(404).json({message:'Route does not exist'}));
 
 export default app;

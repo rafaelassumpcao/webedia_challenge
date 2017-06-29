@@ -44,7 +44,6 @@ const Desktop = () => {
           <Route exact path="/products" render={() => <div><h1>Shopping</h1></div>}/>
         </Switch>
         </main>
-        {/*<CardList desktop={true}/>*/}
       </ResponsiveComponent>
   )
 }
