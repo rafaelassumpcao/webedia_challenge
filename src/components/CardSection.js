@@ -3,9 +3,9 @@ import React from 'react';
 const CardSection = props => {
 
   return (
-    <div className="card-section">
+    <section className="card-section">
       {props.children}
-    </div>
+    </section>
   );
 };
 

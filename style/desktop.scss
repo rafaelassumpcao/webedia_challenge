@@ -37,10 +37,32 @@ div.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .flex-item{
   flex: 1 0 auto;
   max-width: 48%;
   display: flex;
+}
+
+.flex-pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 15px 0px 15px 0px;
+}
+
+.flex-page {
+  flex: 0 0 auto;
+  background-color: white;
+  color: #e88648;
+  padding: 5px;
+  margin: 5px;
+  width: 24px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  cursor: pointer;
 }

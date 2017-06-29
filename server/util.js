@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 
 export const NODE_ENVRIOMENT = process.env.NODE_ENV;
+export const DECRESCENT_ORDER = -1;
+export const MAX_ITEM_PER_PAGE = 5;
 
 
 /**
@@ -17,9 +19,9 @@ export const webpackBridge = app => {
 
     app.use(webpackMiddleware(webpack(webpackConfig)));
   } else {
-    app.use(express.static('src'));
+    app.use(express.static(path.resolve(__dirname, 'public')));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'index.html'));
+      res.sendFile(path.join(__dirname + '../public/', 'index.html'));
     })
   }
 }

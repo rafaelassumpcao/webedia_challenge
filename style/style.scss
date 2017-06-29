@@ -57,7 +57,7 @@ p > span.logo > i {
     align-self: center;
 }
 
-div.card-section > h1.card-section-title {
+.card-section > header.card-section-title {
     color: $primary-color;
     font-size: 2em;
     margin-bottom: 15px;
@@ -66,14 +66,14 @@ div.card-section > h1.card-section-title {
     font-family: 'Roboto', sans-serif;
 }
 
-div.card-section > h3.card-section-subtitle {
+.card-section > complementary.card-section-subtitle {
     color: #777577;
     font-size: 18px;
     margin-bottom: 15px;
     font-weight: 700;
 }
 
-div.card-section > h2.card-section-footer-title {
+.card-section > h2.card-section-footer-title {
     color: $primary-color;
     font-size: 19px;
     margin-bottom: 5px;

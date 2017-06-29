@@ -3,43 +3,85 @@ import { ResponsiveComponent } from 'react-responsive-component';
 import axios from 'axios';
 
 import Card from './Card';
+import Paginator from './Paginator';
 
 export default class CardList extends Component {
 
   constructor(props){
     super(props);
-    this.state = { posts: [], isLoaded: false };
+    this.state = { 
+      posts: [],
+      counter: 0,
+      isLoaded: false 
+    };
+    this.changePage = this.changePage.bind(this);
+  }
+
+  changePage(page) {
+    console.log(page)
+    axios.get(`/webedia/posts?page=${page}`)
+      .then(result => {
+        console.log(result.data)
+        this.setState({
+          posts: result.data.all, 
+          offset: result.data.offset,
+          counter: result.data.count 
+        })
+      });
   }
 
   componentDidMount(){
     axios.get('/webedia/posts')
-      .then(result => this.setState({posts: result.data}));
+      .then(result => {
+        console.log(result.data)
+        this.setState({
+          posts: result.data.all, 
+          counter: result.data.count 
+        })
+      });
   }
 
 
-  render(){
-    const cardItems= this.state.posts.map((post, index) => {
-      if(index === 0) {
-        return (<Card blogPost={post} key={ post._id } />);
-      }
-      return (<Card blogPost={post} isDesktop={this.props.desktop} key={ post._id } />)
-      
-    });
+  render(){    
+
+    const cardItemsMobile = 
+      this.state.posts.map(post => ( <Card blogPost={ post } key={ post._id }/> ));
+
+    const hasPosts = this.state.posts.length !== 0;
+    let firstCard, allOtherCards;
+    if (hasPosts) {
+      const [head, ...tail] = this.state.posts;
+      firstCard = <Card blogPost={head} />;
+      allOtherCards = tail.map((post, index) =>  
+        (
+          <div key={ post._id } className="flex-item">
+            <Card blogPost={ post } 
+                  isDesktop={ this.props.desktop } 
+            />
+          </div>
+        )
+      )
+    }
+
     return(
       <div>
       <ResponsiveComponent query="only screen and (max-width: 900px)">
         <div className="card-list-mobile">
-          { cardItems }
+          { cardItemsMobile }
         </div>
       </ResponsiveComponent>
 
       <ResponsiveComponent query="only screen and (min-width: 901px)">
         <div className="card-list">
-         { cardItems[0] }
-          <div className="flex-container blue">
-            <div className="red flex-item">{cardItems[1]}</div>
-            <div className="red flex-item">{cardItems[2]}</div>
+         { firstCard }
+          <div className="flex-container">
+            { allOtherCards }
           </div>
+          <Paginator 
+            total={ this.state.counter } 
+            page={ this.state.offset }
+            onChangePage={ this.changePage }
+          />
         </div>
       </ResponsiveComponent>
 

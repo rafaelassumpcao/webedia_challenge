@@ -2,17 +2,17 @@ import React from 'react';
 
 import CardSection from './CardSection';
 
-const Card = ({ blogPost, isDesktop }) => {
+const Card = ({ blogPost, isDesktop = false }) => {
   const { header, subHeader, title, description, imageLink } = blogPost;
   return(
     <article className="card">
       <CardSection>
-        <h1 className="card-section-title">
+        <header className="card-section-title">
           { header }
-        </h1>
-        <h3 className="card-section-subtitle">
+        </header>
+        <complementary className="card-section-subtitle">
           { subHeader }
-        </h3>
+        </complementary>
       </CardSection>
       <CardSection>
         <figure className="responsive-img">
