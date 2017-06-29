@@ -48,6 +48,21 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      compress:{
+        warnings: true,
+        screw_ie8: true
+      },
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true
+      },
+      comments: false
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
   ]
 };
