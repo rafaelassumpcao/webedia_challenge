@@ -1,7 +1,5 @@
 # Webedia Challenge
 
-@nandosangenetto e @thiagoverly
-
 node version: 6.10.3
 
 how to install:
