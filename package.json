@@ -47,7 +47,7 @@
     "jsdom": "^11.0.0",
     "mocha": "^3.4.2",
     "mocha-webpack": "^0.7.0",
-    "mongoose": "^4.10.8",
+    "mongoose": "^5.7.8",
     "node-sass": "^4.5.3",
     "react-addons-test-utils": "^15.6.0",
     "rimraf": "^2.6.1",
